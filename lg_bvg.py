@@ -5,12 +5,8 @@ from tweepy import OAuthHandler
 from tweepy import Stream
 from tweepy import API
 
+import settings
 
-consumer_key = ""
-consumer_secret = ""
-
-access_token = ""
-access_token_secret = ""
 
 bvg_accounts = ['232867314', '234688983', '234689386']
 bvg_people = ['Yesica', 'Yesi', 'Ines', 'Nico', 'André', 'René', 'Chris', 'Petra', 'Klaus']
@@ -35,8 +31,8 @@ class BVGListener(StreamListener):
 
 if __name__ == '__main__':
     bvg = BVGListener()
-    auth = OAuthHandler(consumer_key, consumer_secret)
-    auth.set_access_token(access_token, access_token_secret)
+    auth = OAuthHandler(settings.consumer_key, settings.consumer_secret)
+    auth.set_access_token(settings.access_token, settings.access_token_secret)
 
     lg_bvg = API(auth)
 
