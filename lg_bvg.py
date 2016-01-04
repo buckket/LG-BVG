@@ -9,7 +9,7 @@ import settings
 
 
 bvg_accounts = ['232867314', '234688983', '234689386']
-bvg_people = ['Yesica', 'Yesi', 'Ines', 'Nico', 'André', 'René', 'Chris', 'Petra', 'Klaus', 'Sabine', 'Feierabend']
+bvg_people = ['Yesica', 'Yesi', 'Ines', 'Nico', 'André', 'René', 'Chris', 'Petra', 'Klaus', 'Sabine', 'Dirk', 'Feierabend']
 
 
 class BVGListener(StreamListener):
