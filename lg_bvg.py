@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
+
+from sklearn.externals import joblib
 
 from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
@@ -9,7 +13,6 @@ import settings
 
 
 bvg_accounts = ['232867314', '234688983', '234689386']
-bvg_people = ['Yesica', 'Yesi', 'Ines', 'Nico', 'André', 'René', 'Chris', 'Petra', 'Klaus', 'Sabine', 'Dirk', 'Feierabend']
 
 
 class BVGListener(StreamListener):
@@ -19,7 +22,8 @@ class BVGListener(StreamListener):
         if not (hasattr(status, 'retweeted_status') or status.text.startswith('@')):
             print("New tweet: {}".format(status.text))
             # check if tweet is of actual value :-)
-            if not any(name in status.text for name in bvg_people):
+            predict = text_clf.predict([status.text])[0]
+            if predict == 1:
                 print("→ RT")
                 lg_bvg.retweet(status.id)
             else:
@@ -30,6 +34,8 @@ class BVGListener(StreamListener):
 
 
 if __name__ == '__main__':
+    text_clf = joblib.load('model/bvg_model.pkl')
+
     bvg = BVGListener()
     auth = OAuthHandler(settings.consumer_key, settings.consumer_secret)
     auth.set_access_token(settings.access_token, settings.access_token_secret)

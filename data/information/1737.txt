@@ -1,0 +1,1 @@
+M29/ 140: die Umleitungen zur Demo sind aufgehoben. Beide Linien weisen starke Verspätungen auf. Es kann zu Ausfällen kommen. #BVG

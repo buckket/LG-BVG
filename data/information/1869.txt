@@ -1,0 +1,1 @@
+TXL/M48/100/200: der Oberleitungsschaden wurde behoben, es kommt aber zu Verspätungen. Bitte mehr Zeit einplanen. #BVG
