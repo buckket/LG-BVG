@@ -20,9 +20,9 @@ class BVGListener(StreamListener):
     def on_status(self, status):
         # check if tweet is either a retweet or a reply and drop it if so
         if not (hasattr(status, 'retweeted_status') or status.text.startswith('@')):
-            print("New tweet: {}".format(status.text))
+            print("New tweet: {}".format(status.text.encode('UTF-8')))
             # check if tweet is of actual value :-)
-            predict = text_clf.predict([status.text])[0]
+            predict = text_clf.predict([status.text.encode('UTF-8')])[0]
             if predict == 1:
                 print("→ RT")
                 lg_bvg.retweet(status.id)
